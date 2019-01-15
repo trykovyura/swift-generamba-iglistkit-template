@@ -1,0 +1,47 @@
+//
+//  {{ module_info.name }}{{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import IGListKit
+
+protocol {{ module_info.name }}DataDisplayManagerOutput: class {
+
+}
+
+class {{ module_info.name }}DataDisplayManager: NSObject {
+
+     var viewModels = [ListDiffable]()
+
+     weak var delegate: {{ module_info.name }}DataDisplayManagerOutput?
+
+     func configure() {
+         viewModels.removeAll()
+         let viewModel = {{ module_info.name }}ViewModel(id: "id", name: "name")
+         viewModels.append({{ module_info.name }}SectionViewModel(viewModel: viewModel))
+     }
+}
+
+extension {{ module_info.name }}DataDisplayManager: ListAdapterDataSource {
+
+    func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
+        return viewModels
+    }
+
+    func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
+        switch object {
+        case is {{ module_info.name }}SectionViewModel:
+            return {{ module_info.name }}SectionController()
+        default:
+            fatalError()
+        }
+    }
+
+    func emptyView(for listAdapter: ListAdapter) -> UIView? {
+        return nil
+    }
+
+}

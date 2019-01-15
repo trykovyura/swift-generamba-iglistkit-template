@@ -1,0 +1,30 @@
+//
+//  {{ module_info.name }}{{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import IGListKit
+
+class {{ module_info.name }}SectionViewModel: NSObject {
+
+    let viewModel: {{ module_info.name }}CellViewModel
+
+    init(viewModel: {{ module_info.name }}CellViewModel) {
+       self.viewModel = viewModel
+    }
+}
+
+extension {{ module_info.name }}SectionViewModel: ListDiffable {
+
+    func diffIdentifier() -> NSObjectProtocol {
+        return self
+    }
+
+    func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
+        return true
+    }
+
+}

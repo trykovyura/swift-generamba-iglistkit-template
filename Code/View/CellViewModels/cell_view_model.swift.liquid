@@ -1,0 +1,46 @@
+//
+//  {{ module_info.name }}{{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import IGListKit
+
+class {{ module_info.name }}CellViewModel {
+
+    let id, name: String
+
+    init(id: String, name: String) {
+       self.id = id
+       self.name = name
+    }
+}
+
+extension {{ module_info.name }}CellViewModel: ListDiffable {
+
+    func diffIdentifier() -> NSObjectProtocol {
+        return id as NSString
+    }
+
+    func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
+        guard let object = object as? {{ module_info.name }}CellViewModel else {
+            return false
+        }
+        return object.name == self.name
+    }
+
+}
+
+extension {{ module_info.name }}CellViewModel: ViewModel {
+
+    var cellClass: UICollectionViewCell.Type {
+        return {{ module_info.name }}Cell.self
+    }
+
+    var defaultHeight: CGFloat? {
+        return 32
+    }
+
+}

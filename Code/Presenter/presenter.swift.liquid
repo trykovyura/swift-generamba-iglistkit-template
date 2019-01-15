@@ -1,0 +1,43 @@
+//
+//  {{ module_info.name }}{{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+import Foundation
+import ViperMcFlurry
+
+class {{ module_info.name }}Presenter: NSObject, {{ module_info.name }}ModuleInput {
+
+    weak var view: {{ module_info.name }}ViewInput
+    var interactor: {{ module_info.name }}InteractorInput
+    var router: {{ module_info.name }}RouterInput
+    weak var moduleOutput: {{ module_info.name }}ModuleOutput?
+
+   init(view: {{ module_info.name }}ViewInput, interactor: {{ module_info.name }}InteractorInput, router: {{ module_info.name }}RouterInput) {
+        self.view = view
+        self.interactor = interactor
+        self.router = router
+    }
+}
+
+extension {{ module_info.name }}Presenter: {{ module_info.name }}ViewOutput {
+
+    func didTriggerViewReady() {
+        view.setupInitialState()
+    }
+
+}
+
+extension {{ module_info.name }}Presenter: {{ module_info.name }}InteractorOutput {
+
+}
+
+extension {{ module_info.name }}Presenter {
+
+    func setModuleOutput(_ moduleOutput: RamblerViperModuleOutput!) {
+        self.moduleOutput = moduleOutput as? {{ module_info.name }}ModuleOutput
+    }
+
+}

@@ -1,0 +1,34 @@
+//
+//  {{ prefix }}{{ module_info.name }}{{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import UIKit
+
+class {{ module_info.name }}ModuleConfigurator {
+
+    func configureModuleForViewInput<UIViewController>(viewInput: UIViewController) {
+
+        if let viewController = viewInput as? {{ module_info.name }}ViewController {
+            configure(viewController: viewController)
+        }
+    }
+
+    private func configure(viewController: {{ module_info.name }}ViewController) {
+        let router = {{ module_info.name }}Router(transitionHandler: viewController)
+        let interactor = {{ module_info.name }}Interactor()
+        let presenter = {{ module_info.name }}Presenter(view: viewController, interactor: interactor, router: router)
+
+        interactor.output = presenter
+
+        viewController.output = presenter
+        viewController.moduleInput = presenter
+        let ddm = {{ module_info.name }}DataDisplayManager()
+        ddm.delegate = viewController
+        viewController.dataDisplayManager = ddm
+    }
+
+}
