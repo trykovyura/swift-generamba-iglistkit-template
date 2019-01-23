@@ -10,7 +10,7 @@ import ViperMcFlurry
 
 class {{ module_info.name }}Presenter: NSObject, {{ module_info.name }}ModuleInput {
 
-    weak var view: {{ module_info.name }}ViewInput
+    weak var view: {{ module_info.name }}ViewInput?
     var interactor: {{ module_info.name }}InteractorInput
     var router: {{ module_info.name }}RouterInput
     weak var moduleOutput: {{ module_info.name }}ModuleOutput?
@@ -25,7 +25,7 @@ class {{ module_info.name }}Presenter: NSObject, {{ module_info.name }}ModuleInp
 extension {{ module_info.name }}Presenter: {{ module_info.name }}ViewOutput {
 
     func didTriggerViewReady() {
-        view.setupInitialState()
+        view?.setupInitialState()
     }
 
 }

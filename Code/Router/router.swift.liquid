@@ -10,7 +10,7 @@ import ViperMcFlurry
 
 class {{ module_info.name }}Router: {{ module_info.name }}RouterInput {
 
-    weak let transitionHandler: RamblerViperModuleTransitionHandlerProtocol
+    weak var transitionHandler: RamblerViperModuleTransitionHandlerProtocol
 
     init(transitionHandler: RamblerViperModuleTransitionHandlerProtocol) {
         self.transitionHandler = transitionHandler

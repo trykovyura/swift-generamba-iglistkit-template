@@ -39,7 +39,6 @@ class {{ module_info.name }}ViewController: UIViewController, {{module_info.name
 
     // MARK: {{module_info.name}}ViewInput
     func setupInitialState() {
-        automaticallyAdjustsScrollViewInsets = false
         view.addSubview(collectionView)
         adapter.collectionView = collectionView
         configureViewConstraints()
