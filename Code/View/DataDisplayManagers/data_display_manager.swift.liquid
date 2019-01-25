@@ -20,7 +20,7 @@ class {{ module_info.name }}DataDisplayManager: NSObject {
 
      func configure() {
          viewModels.removeAll()
-         let viewModel = {{ module_info.name }}ViewModel(id: "id", name: "name")
+         let viewModel = {{ module_info.name }}CellViewModel(id: "id", name: "name")
          viewModels.append({{ module_info.name }}SectionViewModel(viewModel: viewModel))
      }
 }
